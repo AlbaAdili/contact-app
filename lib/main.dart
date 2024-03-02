@@ -198,17 +198,13 @@ class ContactDetailScreen extends StatelessWidget {
     );
   }
 }
-
-
 class ContactsPage extends StatefulWidget {
   @override
   _ContactsPageState createState() => _ContactsPageState();
 }
-
 class _ContactsPageState extends State<ContactsPage> {
   String _searchQuery = '';
   Contact? _selectedContact;
-
 
   @override
   Widget build(BuildContext context) {
@@ -247,7 +243,7 @@ class _ContactsPageState extends State<ContactsPage> {
             IconButton(
               icon: Icon(Icons.search),
               onPressed: () {
-
+                // Handle search action
               },
             ),
           ],
@@ -381,8 +377,6 @@ class _ContactsPageState extends State<ContactsPage> {
   }
 }
 
-
-// Dummy contacts data for demonstration
 class Contact {
   final String name;
   final String phoneNumber;
