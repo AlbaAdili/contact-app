@@ -243,7 +243,6 @@ class _ContactsPageState extends State<ContactsPage> {
             IconButton(
               icon: Icon(Icons.search),
               onPressed: () {
-                // Handle search action
               },
             ),
           ],
@@ -254,7 +253,7 @@ class _ContactsPageState extends State<ContactsPage> {
         itemBuilder: (context, index) {
           String initialLetter = groupedContacts.keys.elementAt(index);
           List<Contact> contacts = groupedContacts[initialLetter]!;
-          Color circleColor = contacts.first.circleColor; // Get the circle color of the first contact
+          Color circleColor = contacts.first.circleColor;
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -286,7 +285,7 @@ class _ContactsPageState extends State<ContactsPage> {
                             width: 40,
                             height: 40,
                             decoration: BoxDecoration(
-                              color: circleColor, // Use the same circle color for contacts with the same initial letter
+                              color: circleColor,
                               shape: BoxShape.circle,
                             ),
                             child: Center(
@@ -317,29 +316,29 @@ class _ContactsPageState extends State<ContactsPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   IconButton(
-                                    iconSize: 40, // Increase icon size
+                                    iconSize: 40,
                                     icon: Icon(Icons.call, color: Colors.green),
                                     onPressed: () {
-                                      // Perform call action
+
                                     },
                                   ),
                                   IconButton(
-                                    iconSize: 40, // Increase icon size
+                                    iconSize: 40,
                                     icon: Icon(Icons.message, color: Colors.blue),
                                     onPressed: () {
-                                      // Perform message action
+
                                     },
                                   ),
                                   IconButton(
-                                    iconSize: 40, // Increase icon size
+                                    iconSize: 40,
                                     icon: Icon(Icons.video_call, color: Colors.red),
                                     onPressed: () {
-                                      // Perform video call action
+
                                     },
                                   ),
                                   IconButton(
-                                    iconSize: 40, // Increase icon size
-                                    icon: Icon(Icons.info, color: Colors.orange), // Information icon
+                                    iconSize: 40,
+                                    icon: Icon(Icons.info, color: Colors.orange),
                                     onPressed: () {
                                       // Navigate to detail page
                                       Navigator.push(
@@ -357,7 +356,7 @@ class _ContactsPageState extends State<ContactsPage> {
                           ),
                         ),
                       ],
-                      Divider(), // Add a divider between contacts
+                      Divider(),
                     ],
                   );
                 },
@@ -368,7 +367,7 @@ class _ContactsPageState extends State<ContactsPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Handle keyboard action
+
         },
         child: Icon(Icons.keyboard),
       ),
