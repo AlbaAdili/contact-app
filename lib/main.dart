@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 void main() {
@@ -29,130 +30,170 @@ class ContactDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Contact Details'),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Column(
-                children: [
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.blue, // You can customize the color
-                      shape: BoxShape.circle,
-                    ),
-                    child: Center(
-                      child: Text(
-                        contact.name[0], // Initial letter of the contact's name
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Column(
+              children: [
+                Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    shape: BoxShape.circle,
                   ),
-                  SizedBox(height: 8),
-                  Center(
+                  child: Center(
                     child: Text(
-                      contact.name,
+                      contact.name[0], // Initial letter of the contact's name
                       style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 40,
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
                       ),
                     ),
                   ),
-                  SizedBox(height: 8),
-                  Center(
-                    child: Text(
-                      'Phone: ${contact.phoneNumber}',
-                      style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 8),
+                Center(
+                  child: Text(
+                    contact.name,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
                     ),
                   ),
-                  SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.call, color: Colors.green),
-                        onPressed: () {
-                          // Perform call action
-                        },
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.message, color: Colors.blue),
-                        onPressed: () {
-                          // Perform message action
-                        },
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.video_call, color: Colors.red),
-                        onPressed: () {
-                          // Perform video call action
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Viber',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.videocam, color: Colors.purple),
-                    onPressed: () {
-                      // Perform Viber video call action
-                    },
-                  ),
-                  Text(
-                    'WhatsApp',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.video_call, color: Colors.green),
-                    onPressed: () {
-                      // Perform WhatsApp video call action
-                    },
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 16),
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle History button press
-                },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.grey[300]!),
                 ),
-                child: Text('History'),
-              ),
-            ),
-            SizedBox(height: 8),
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle Storage locations button press
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey[300], // Grey background color
+                SizedBox(height: 8),
+                Center(
+                  child: Text(
+                    'Phone: ${contact.phoneNumber}',
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ),
-                child: Text('Storage locations'),
-              ),
+                SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.call, color: Colors.green),
+                      onPressed: () {
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.message, color: Colors.blue),
+                      onPressed: () {
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.video_call, color: Colors.red),
+                      onPressed: () {
+                      },
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Viber',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.videocam, color: Colors.purple),
+                      onPressed: () {
+                      },
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'WhatsApp',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.video_call, color: Colors.green),
+                      onPressed: () {
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                  },
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all<EdgeInsets>(
+                      EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+                    ),
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.grey[300]!),
+                  ),
+                  child: Text('History'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+                    backgroundColor: Colors.grey[300],
+                  ),
+                  child: Text('Storage locations'),
+                ),
+              ],
+            ),
+          ),
+          Spacer(),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    Icon(Icons.favorite),
+                    Text('Favorites'),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Icon(Icons.edit),
+                    Text('Edit'),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Icon(Icons.share),
+                    Text('Share'),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Icon(Icons.more_vert),
+                    Text('More'),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -168,15 +209,17 @@ class _ContactsPageState extends State<ContactsPage> {
   String _searchQuery = '';
   Contact? _selectedContact;
 
+
   @override
   Widget build(BuildContext context) {
+    // Filter contacts based on search query
     List<Contact> filteredContacts = _contacts.where((contact) {
       // Check if contact name or phone number contains the search query
       return contact.name.toLowerCase().contains(_searchQuery.toLowerCase()) ||
           contact.phoneNumber.contains(_searchQuery);
     }).toList();
 
-    // Group contacts by the first letter of their names
+    // Group filtered contacts by the first letter of their names
     Map<String, List<Contact>> groupedContacts = {};
     for (var contact in filteredContacts) {
       String firstLetter = contact.name[0].toUpperCase();
@@ -186,16 +229,28 @@ class _ContactsPageState extends State<ContactsPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: TextField(
-          onChanged: (value) {
-            setState(() {
-              _searchQuery = value;
-            });
-          },
-          decoration: InputDecoration(
-            hintText: 'Search contacts...',
-            border: InputBorder.none,
-          ),
+        title: Row(
+          children: [
+            Expanded(
+              child: TextField(
+                onChanged: (value) {
+                  setState(() {
+                    _searchQuery = value;
+                  });
+                },
+                decoration: InputDecoration(
+                  hintText: 'Search contacts...',
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+
+              },
+            ),
+          ],
         ),
       ),
       body: ListView.builder(
@@ -203,6 +258,8 @@ class _ContactsPageState extends State<ContactsPage> {
         itemBuilder: (context, index) {
           String initialLetter = groupedContacts.keys.elementAt(index);
           List<Contact> contacts = groupedContacts[initialLetter]!;
+          Color circleColor = contacts.first.circleColor; // Get the circle color of the first contact
+
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -229,6 +286,23 @@ class _ContactsPageState extends State<ContactsPage> {
                           });
                         },
                         child: ListTile(
+                          leading: Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: circleColor, // Use the same circle color for contacts with the same initial letter
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: Text(
+                                contact.name[0], // Initial letter of the contact's name
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
                           title: Text(contact.name),
                         ),
                       ),
@@ -296,21 +370,30 @@ class _ContactsPageState extends State<ContactsPage> {
           );
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Handle keyboard action
+        },
+        child: Icon(Icons.keyboard),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );
   }
 }
+
 
 // Dummy contacts data for demonstration
 class Contact {
   final String name;
   final String phoneNumber;
+  final Color circleColor;
 
-  Contact({required this.name, required this.phoneNumber});
+  Contact({required this.name, required this.phoneNumber, required this.circleColor});
 }
 
 List<Contact> _contacts = [
-  Contact(name: 'Alba Adili', phoneNumber: '123-456-7890'),
-  Contact(name: 'Mea Gjura', phoneNumber: '987-654-3210'),
-  Contact(name: 'Ale Jakupi', phoneNumber: '555-555-5555'),
-  Contact(name: 'Noa Guri', phoneNumber: '777-777-7777'),
+  Contact(name: 'Alba Adili', phoneNumber: '123-456-7890',circleColor: Colors.blue),
+  Contact(name: 'Mea Gjura', phoneNumber: '987-654-3210',circleColor: Colors.pink),
+  Contact(name: 'Ale Jakupi', phoneNumber: '555-555-5555',circleColor: Colors.blue),
+  Contact(name: 'Noa Guri', phoneNumber: '777-777-7777',circleColor: Colors.green),
 ];
